@@ -4,8 +4,7 @@ import { createEvent, type CreateEventPayload } from "../api";
 
 const MAX_BYTES = 50 * 1024 * 1024; // keep in sync with backend (50MB example)
 
-export function CreateEventForm({ userId, circleId, onCreated }: {
-  userId: string;
+export function CreateEventForm({ circleId, onCreated }: {
   circleId: string;
   onCreated?: (event: any) => void;
 }) {
