@@ -225,8 +225,7 @@ async function apiFetch<T>(path: string, init: RequestInit = {}): Promise<T> {
 
   const contentType = res.headers.get("content-type") || "";
   if (!contentType.includes("application/json")) {
-    // @ts-expect-error allow non-json responses
-    return (await res.text()) as T;
+    return (await res.text()) as unknown as T;
   }
   return (await res.json()) as T;
 }
@@ -277,7 +276,7 @@ async function buildHomeTasksFallback(): Promise<HomeTasksResponse> {
 
   // pending = same as backend HomeService: canChangeResolution + open
 const pendingEvents = openEvents.filter(
-  (ev) => ev.status === EventStatus.OPEN,
+  (ev) => ev.status === "open",
 );
 
 
@@ -507,4 +506,3 @@ export async function health(): Promise<{
 }> {
   return apiFetch(`/health`);
 }
-
