@@ -1,6 +1,6 @@
 // components/CreateEventForm.tsx
 import React, { useMemo, useState } from "react";
-import { createEventWithOptionalVideo, type CreateEventPayload } from "../api/events";
+import { createEvent, type CreateEventPayload } from "../api";
 
 const MAX_BYTES = 50 * 1024 * 1024; // keep in sync with backend (50MB example)
 
@@ -39,7 +39,7 @@ export function CreateEventForm({ userId, circleId, onCreated }: {
 
     setBusy(true);
     try {
-      const created = await createEventWithOptionalVideo(userId, payload, file);
+      const created = await createEvent(payload, file);
       onCreated?.(created);
       setRequestText("");
       setFile(undefined);
@@ -97,4 +97,3 @@ export function CreateEventForm({ userId, circleId, onCreated }: {
     </form>
   );
 }
-
