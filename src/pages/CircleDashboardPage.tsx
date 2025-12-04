@@ -1,16 +1,8 @@
-// src/pages/CircleDashboardPage.tsx
-import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import {
-  getMe,
-  getEvents,
-  getCircleMembers,
-  addCircleMember,
-  removeCircleMember,
+
   type MeResponse,
   type EventResponse,
-  type CircleMember,
-  type MemberRole,
+  type CircleMemberResponse,
+  type CircleMemberRole,
 } from '../api';
 
 type LoadingState = 'idle' | 'loading' | 'error';
@@ -24,7 +16,7 @@ export function CircleDashboardPage() {
   const [cameraZones, setCameraZones] = useState<string[]>([]);
   const [isOwner, setIsOwner] = useState(false);
 
-  const [members, setMembers] = useState<CircleMember[]>([]);
+  const [members, setMembers] = useState<CircleMemberResponse[]>([]);
   const [events, setEvents] = useState<EventResponse[]>([]);
 
   const [metaLoading, setMetaLoading] = useState<LoadingState>('loading');
@@ -40,7 +32,7 @@ export function CircleDashboardPage() {
   const [newMemberEmail, setNewMemberEmail] = useState('');
   const [newMemberName, setNewMemberName] = useState('');
   const [newMemberRole, setNewMemberRole] =
-    useState<MemberRole>('neighbor');
+    useState<CircleMemberRole>('neighbor');
   const [addingMember, setAddingMember] = useState(false);
 
   // basic circle info & whether current user is owner
@@ -107,12 +99,11 @@ export function CircleDashboardPage() {
 
     try {
       setAddingMember(true);
-      await addCircleMember(
-        circleId,
-        newMemberEmail.trim(),
-        newMemberName.trim() || undefined,
-        newMemberRole,
-      );
+      await addCircleMember(circleId, {
+        email: newMemberEmail.trim(),
+        name: newMemberName.trim() || undefined,
+        role: newMemberRole,
+      });
       setNewMemberEmail('');
       setNewMemberName('');
       setNewMemberRole('neighbor');
@@ -329,7 +320,7 @@ export function CircleDashboardPage() {
                 <select
                   value={newMemberRole}
                   onChange={(e) =>
-                    setNewMemberRole(e.target.value as MemberRole)
+                    setNewMemberRole(e.target.value as CircleMemberRole)
                   }
                 >
                   <option value="resident">Resident</option>
