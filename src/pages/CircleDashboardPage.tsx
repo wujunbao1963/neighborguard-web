@@ -1,4 +1,12 @@
-
+// src/pages/CircleDashboardPage.tsx
+import React, { useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import {
+  getMe,
+  getEvents,
+  getCircleMembers,
+  addCircleMember,
+  removeCircleMember,
   type MeResponse,
   type EventResponse,
   type CircleMemberResponse,
