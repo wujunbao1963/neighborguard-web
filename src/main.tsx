@@ -4,15 +4,14 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import './index.css';
 
+console.log("VITE_API_URL =", import.meta.env.VITE_API_URL);
+
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <BrowserRouter>
       <App />
     </BrowserRouter>
   </React.StrictMode>,
-
-console.log("VITE_API_URL =", import.meta.env.VITE_API_URL);
-
-  
 );
+
 
