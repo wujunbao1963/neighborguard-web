@@ -10,5 +10,9 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
       <App />
     </BrowserRouter>
   </React.StrictMode>,
+
+console.log("VITE_API_URL =", import.meta.env.VITE_API_URL);
+
+  
 );
 
