@@ -5,9 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "prebuild": "node -e \"console.log('build VITE_API_URL =', process.env.VITE_API_URL || '(undefined)'); console.log('build BACKEND_URL =', process.env.BACKEND_URL || '(undefined)')\"",
-    "prebuild": "node -e \"console.log('### PREBUILD RAN ###')\"",
-    "build": "tsc -b && vite build",
+    "build": "node -e \"console.log('### BUILD ENV VITE_API_URL =', process.env.VITE_API_URL || '(undefined)')\" && tsc -b && vite build",
+    //"build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
