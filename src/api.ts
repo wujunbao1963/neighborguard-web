@@ -1,7 +1,7 @@
 // src/api.ts
 
-const API_BASE_URL = import.meta.env.VITE_API_URL ?? "http://localhost:3000/api";
-const API_ORIGIN = API_BASE_URL.replace(/\/api\/?$/, ""); // -> http://localhost:3000
+//const API_BASE_URL = import.meta.env.VITE_API_URL ?? "http://localhost:3000/api";
+//const API_ORIGIN = API_BASE_URL.replace(/\/api\/?$/, ""); // -> http://localhost:3000
 
 const API_BASE_URL = "https://neighborguard-production.up.railway.app/api";
 const API_ORIGIN = API_BASE_URL.replace(/\/api\/?$/, "");
