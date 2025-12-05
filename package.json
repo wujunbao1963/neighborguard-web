@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "prebuild": "node -e \"console.log('build VITE_API_URL =', process.env.VITE_API_URL || '(undefined)'); console.log('build BACKEND_URL =', process.env.BACKEND_URL || '(undefined)')\"",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
@@ -29,4 +30,5 @@
     "vite": "^7.2.4"
   }
 }
+
 
